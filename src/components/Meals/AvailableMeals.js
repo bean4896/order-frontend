@@ -11,7 +11,7 @@ const AvailableMeals = () => {
 
      useEffect(() => {
       const fetchMeals = async () => {
-         const response = await fetch('https://oct31order.herokuapp.com/record');
+         const response = await fetch('https://fly-oct.fly.dev/record');
          const responseData = await response.json();
         
          if (!response.ok) {
