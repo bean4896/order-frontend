@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+// import { useNavigate } from "react-router";
 import Checkout from "./Checkout";
 
 import Modal from "../UI/Modal";
@@ -7,6 +8,8 @@ import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 
 const Cart = (props) => {
+
+  // const navigate = useNavigate();
   const [isCheckout, setIsCheckout] = useState(false);
   const cartCtx = useContext(CartContext);
 
@@ -25,14 +28,21 @@ const Cart = (props) => {
     setIsCheckout(true);
   };
 
+  //submit order
   const submitOrderHandler = (userData) => {
-      fetch('https://oct31order.herokuapp.com/order', {
+      fetch('https://order-app-sample-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json', {
         method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           user: userData,
           orderedItems: cartCtx.items
         }),
-      });
+      })
+      // navigate("/");
+      console.log('order submited');
+      
   };
 
   const cartItems = (

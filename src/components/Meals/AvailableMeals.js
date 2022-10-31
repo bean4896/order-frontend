@@ -11,7 +11,8 @@ const AvailableMeals = () => {
 
      useEffect(() => {
       const fetchMeals = async () => {
-         const response = await fetch('https://fly-oct.fly.dev/record');
+
+         const response = await fetch('https://order-app-sample-default-rtdb.asia-southeast1.firebasedatabase.app/meal.json');
          const responseData = await response.json();
         
          if (!response.ok) {
